@@ -1,0 +1,20 @@
+---
+- hosts: webservers
+
+  tasks:
+    - name: install apache
+      ansible.builtin.yum:
+        name: httpd 
+        state: installed
+   
+    - name: start and enabled service 
+      ansible.builtin.service: 
+        name: httpd 
+        state: started 
+        enbabled: yes
+ 
+    - name: copy file 
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html/index.html
+...
